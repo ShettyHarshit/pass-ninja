@@ -41,7 +41,7 @@ const PasswordRow = ({ password }: { password: Password }) => {
                   setIsHidden(!isHidden);
                 }}
               >
-                Reveal
+                {isHidden ? "Reveal" : "Hide"}
               </Button>{" "}
               <Button>Delete</Button>
             </div>
