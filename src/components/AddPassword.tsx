@@ -7,11 +7,13 @@ function AddPassword({ refreshPasswordList }: { refreshPasswordList: any }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data: any) => {
     addPassword(data);
     refreshPasswordList();
+    reset();
   };
 
   return (
