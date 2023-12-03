@@ -25,3 +25,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.blur {
+  color: transparent;
+  text-shadow: 0 0 8px #000;
+  transition: color 300ms linear, text-shadow 300ms linear;
+}
+
+.no-blur {
+  color: inherit;
+  text-shadow: inherit;
+  transition: color 300ms linear, text-shadow 300ms linear;
+}
