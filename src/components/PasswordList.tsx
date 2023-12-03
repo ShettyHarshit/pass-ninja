@@ -20,7 +20,7 @@ function PasswordList({ passwords }: { passwords: Password[] }) {
 export default PasswordList;
 
 const PasswordRow = ({ password }: { password: Password }) => {
-  const [blurValue, setBlurValue] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
   return (
     <div>
       <UnorderedList>
@@ -30,7 +30,7 @@ const PasswordRow = ({ password }: { password: Password }) => {
               <h2>Platform: {password.title}</h2>
               <h3>
                 Password:{" "}
-                <span className={blurValue ? "blur" : "no-blur"}>
+                <span className={isHidden ? "blur" : "no-blur"}>
                   {decryptPassword({ encrypted: password.value })}
                 </span>
               </h3>
@@ -38,7 +38,7 @@ const PasswordRow = ({ password }: { password: Password }) => {
             <div>
               <Button
                 onClick={() => {
-                  setBlurValue(!blurValue);
+                  setIsHidden(!isHidden);
                 }}
               >
                 Reveal
