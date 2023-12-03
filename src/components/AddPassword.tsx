@@ -1,5 +1,13 @@
 import { addPassword } from "@/services/encryption";
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 function AddPassword({ refreshPasswordList }: { refreshPasswordList: any }) {
@@ -16,6 +24,9 @@ function AddPassword({ refreshPasswordList }: { refreshPasswordList: any }) {
     reset();
   };
 
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -26,7 +37,14 @@ function AddPassword({ refreshPasswordList }: { refreshPasswordList: any }) {
         <br />
         <FormControl isRequired>
           <FormLabel>Password</FormLabel>
-          <Input type="password" {...register("value")} />
+          <InputGroup size="md">
+            <Input type={show ? "text" : "password"} {...register("value")} />
+            <InputRightElement width="4.5rem">
+              <Button h="1.75rem" size="sm" onClick={handleClick}>
+                {show ? "Hide" : "Show"}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
         </FormControl>
         <br />
         <div className="form-control">
