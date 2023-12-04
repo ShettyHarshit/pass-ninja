@@ -1,3 +1,4 @@
+import { Password } from "@/data/Password";
 import { addPassword } from "@/services/encryption";
 import {
   Button,
@@ -16,9 +17,9 @@ function AddPassword({ refreshPasswordList }: { refreshPasswordList: any }) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<Password>();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: Password) => {
     addPassword(data);
     refreshPasswordList();
     reset();
